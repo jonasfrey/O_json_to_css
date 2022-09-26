@@ -19,9 +19,9 @@
         <![endif]-->
 
         <script type="module">
-            import {f_evaluate_object} from "https://deno.land/x/f_evaluate_object@0.1/f_evaluate_object.module.js"
 
-var o_json_to_css = {
+
+var o = {
     o_functions: {
         f_s_color_to_rgba(o_color){
             return `rgba(${o_color.r},${o_color.g},${o_color.b},${o_color.alpha})`
@@ -142,7 +142,7 @@ var o_json_to_css = {
                 },
             a_o_ruleset: [
                 {
-                    "s_selector": " .theme_dark", 
+                    "s_selector": " .theme_dark, .theme_dark2", 
                     o_rules:{
                             "background-color": "${o_functions.f_s_color_to_rgba(o_themes.o_dark.o_colors.o_background)}",
                             "color": "${o_functions.f_s_color_to_rgba(o_themes.o_dark.o_colors.o_foreground)}"
@@ -161,45 +161,10 @@ var o_json_to_css = {
     }
 }
 
+var o_json_to_css = new O_json_to_css(o); 
 
-var o_json_to_css_original = Object.assign({}, o_json_to_css);
+await o_json_to_css.f_render();
 
-var f_s_css_rendered = async function(){
-
-    await f_evaluate_object(o_json_to_css,o_json_to_css)
-    var a_s_css = []
-    f_push_css_by_o_ruleset(o_json_to_css.o_css.o_ruleset, {s_selector : ""}, a_s_css)
-    
-    return Promise.resolve(a_s_css.join("\n"));
-}
-
-var f_push_css_by_o_ruleset = function(o, o_parent = null, a_s_css){
-    // var s_css = `${o_parent.s_selector}${o.s_selector}{${o.o_rules.map((s_prop_name,s_value)=>`${s_prop_name}:${s_value}`).join(";")}}`
-
-    var a_s_line = []
-    for(var s_prop_name in o.o_rules){
-        a_s_line.push(`${s_prop_name}:${o.o_rules[s_prop_name]};`)
-    }
-    var s_css = `${o_parent.s_selector}${o.s_selector}{${a_s_line.join("\n")}}`
-
-    if(o.a_o_ruleset){
-        for(var n_i in o.a_o_ruleset){
-            f_push_css_by_o_ruleset(o.a_o_ruleset[n_i], o, a_s_css)
-        }
-    }
-    a_s_css.push(s_css);
-}
-
-var o_style_sheet = document.createElement("style")
-o_style_sheet.setAttribute("id", "o_json_to_css");
-document.head.appendChild(o_style_sheet)
-
-var f_render = async function(){
-    var s_css = await f_s_css_rendered();
-    console.log(s_css)
-    o_style_sheet.innerText = s_css
-}
-f_render()
         </script>
         
         <script type="module">
@@ -246,7 +211,8 @@ window.vueObject = new Vue({
             b: false, 
             a_s_theme : [
                 "theme_dark",
-                "theme_light"
+                "theme_light", 
+                "theme_dark2"
             ]
 
         }

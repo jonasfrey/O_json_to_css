@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>test</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <div id="app"></div>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <script type="module">
+
+
+var o = {
+    o_functions: {
+        f_s_color_to_rgba(o_color){
+            return `rgba(${o_color.r},${o_color.g},${o_color.b},${o_color.alpha})`
+        }
+    },
+    o_themes: {
+        o_dark: {
+            o_colors: {
+                "o_background": {
+                    r: 22, 
+                    g: 22, 
+                    b: 22, 
+                    alpha: 0.9,
+                },
+                "o_foreground": {
+                    r: 222, 
+                    g: 222, 
+                    b: 222, 
+                    alpha: 0.9,
+                },
+                "o_alpha": {
+                    r: 0, 
+                    g: 0, 
+                    b: 0, 
+                    alpha: 0.9,
+                },
+                "o_beta": {
+                    r: 0, 
+                    g: 0, 
+                    b: 0, 
+                    alpha: 0.9,
+                },
+                "o_gamma": {
+                    r: 0, 
+                    g: 0, 
+                    b: 0, 
+                    alpha: 0.9,
+                },
+                "o_red": {
+                    r: 0, 
+                    g: 0, 
+                    b: 0, 
+                    alpha: 0.9,
+                },
+                "o_green": {
+                    r: 0, 
+                    g: 0, 
+                    b: 0, 
+                    alpha: 0.9,
+                },
+                "o_blue": {
+                    r: 0, 
+                    g: 0, 
+                    b: 0, 
+                    alpha: 0.9,
+                },
+            }
+        }, 
+        o_light: {
+            o_colors: {
+                "o_background": {
+                    r: 222, 
+                    g: 222, 
+                    b: 222, 
+                    alpha: 0.9,
+                },
+                "o_foreground": {
+                    r: 22, 
+                    g: 22, 
+                    b: 22, 
+                    alpha: 0.9,
+                },
+                "o_alpha": {
+                    r: 0, 
+                    g: 0, 
+                    b: 0, 
+                    alpha: 0.9,
+                },
+                "o_beta": {
+                    r: 0, 
+                    g: 0, 
+                    b: 0, 
+                    alpha: 0.9,
+                },
+                "o_gamma": {
+                    r: 0, 
+                    g: 0, 
+                    b: 0, 
+                    alpha: 0.9,
+                },
+                "o_red": {
+                    r: 0, 
+                    g: 0, 
+                    b: 0, 
+                    alpha: 0.9,
+                },
+                "o_green": {
+                    r: 0, 
+                    g: 0, 
+                    b: 0, 
+                    alpha: 0.9,
+                },
+                "o_blue": {
+                    r: 0, 
+                    g: 0, 
+                    b: 0, 
+                    alpha: 0.9,
+                },
+            }
+        }
+    },
+    o_css: {
+        o_ruleset: 
+        {
+            "s_selector": " body", 
+            o_rules:{
+                    "font-size": "1.2rem"
+                },
+            a_o_ruleset: [
+                {
+                    "s_selector": " .theme_dark, .theme_dark2", 
+                    o_rules:{
+                            "background-color": "${o_functions.f_s_color_to_rgba(o_themes.o_dark.o_colors.o_background)}",
+                            "color": "${o_functions.f_s_color_to_rgba(o_themes.o_dark.o_colors.o_foreground)}"
+                        },
+                },
+                {
+                    "s_selector": " .theme_light", 
+                    o_rules:{
+                            "background-color": "${o_functions.f_s_color_to_rgba(o_themes.o_light.o_colors.o_background)}",
+                            "color": "${o_functions.f_s_color_to_rgba(o_themes.o_light.o_colors.o_foreground)}"
+                        },
+                }
+            ]
+        }
+        
+    }
+}
+import {O_json_to_css} from "https://deno.land/x/o_json_to_css@0.1/O_json_to_css.module.js";
+
+var o_json_to_css = new O_json_to_css(o); 
+
+await o_json_to_css.f_render();
+
+        </script>
+        
+        <script type="module">
+
+import O_json_to_html from "https://unpkg.com/o_json_to_html@1.0.6/o_json_to_html.module.js"
+
+
+// import { O_image } from "./O_image.module.js"
+// import { O_image_mask }  from "./O_image_mask.module.js"
+
+ //development mode vue
+ // import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.esm.browser.js'
+ //production mode vue 
+ import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.esm.browser.min.js'
+
+ var o_json_to_html = new O_json_to_html();
+document.getElementById("app").append(
+    o_json_to_html.f_json_to_html(
+        {
+            s_t:"div",
+            a_c:[
+
+                {   
+                    "v-for":"s in a_s_theme",
+                    ":class": "s", 
+                    "a_c": [
+                        {
+                            "s_inner_text": "hello!"
+                        }
+                    ]
+                }, 
+
+            ] 
+        }
+    )
+);
+        
+        
+window.vueObject = new Vue({
+    el: '#app',
+
+    data (){
+        return {
+            b: false, 
+            a_s_theme : [
+                "theme_dark",
+                "theme_light", 
+                "theme_dark2"
+            ]
+
+        }
+    },
+    updated: async function(){
+    },
+    mounted:async function () {
+
+    },
+    watch: {
+    },
+    methods: {
+    },
+    computed: {
+        
+    }
+})
+        </script>
+    </body>
+</html>

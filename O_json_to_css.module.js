@@ -14,7 +14,7 @@ class O_json_to_css{
     async f_evaluate(){
         this.o_evaluated = Object.assign({}, this.o)
         await f_evaluate_object(this.o_evaluated, this.o_evaluated);
-        console.log(this.o_evaluated)
+        // console.log(this.o_evaluated)
 
     }
 
@@ -37,7 +37,7 @@ class O_json_to_css{
                 var s_css = `${s_selector_parent}${s_selector}{${a_s_line.join("\n")}}`
                 a_s_css.push(s_css);
             }
-            console.log(`${o_parent.s_selector}${s_selector}`)
+            // console.log(`${o_parent.s_selector}${s_selector}`)
 
             if(o.a_o_ruleset){
                 for(var n_i in o.a_o_ruleset){
@@ -51,7 +51,7 @@ class O_json_to_css{
     async f_render(){
         await this.f_evaluate()
         var s_css = await this.f_s_css_rendered();
-        console.log(s_css)
+        // console.log(s_css)
         this.o_style_sheet.innerHTML = s_css
     }
 

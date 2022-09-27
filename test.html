@@ -147,6 +147,14 @@ var o = {
                             "background-color": "${o_functions.f_s_color_to_rgba(o_themes.o_dark.o_colors.o_background)}",
                             "color": "${o_functions.f_s_color_to_rgba(o_themes.o_dark.o_colors.o_foreground)}"
                         },
+                    a_o_ruleset: [
+                        {
+                            s_selector: " .a, .b, .c, .d",
+                            o_rules:{
+                                color: 'red'
+                            } 
+                        }
+                    ]
                 },
                 {
                     "s_selector": " .theme_light", 
@@ -161,9 +169,16 @@ var o = {
     }
 }
 
+import {f_evaluate_object} from "https://deno.land/x/f_evaluate_object@0.1/f_evaluate_object.module.js"
+
+
 var o_json_to_css = new O_json_to_css(o); 
+var o_json_to_css2 = new O_json_to_css(o); 
+var o_json_to_css3 = new O_json_to_css(o); 
 
 await o_json_to_css.f_render();
+await o_json_to_css2.f_render();
+await o_json_to_css3.f_render();
 
         </script>
         
